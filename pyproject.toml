@@ -1,0 +1,76 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "newsrec"
+version = "0.1.0"
+description = "A content-based news recommendation engine"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+keywords = ["recommendation", "nlp", "machine-learning", "news"]
+authors = [
+    {name = "NewsRec Team"},
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "pandas>=2.2.0",
+    "requests>=2.31.0",
+    "spacy>=3.7.2",
+    "beautifulsoup4>=4.12.3",
+    "scikit-learn>=1.4.2",
+    "gensim>=4.3.2",
+    "nltk>=3.8.1",
+    "sentence-transformers>=2.5.1",
+    "torch>=2.2.1",
+    "faiss-cpu>=1.7.4",
+    "fastapi>=0.110.0",
+    "uvicorn>=0.27.1",
+    "typer>=0.9.0",
+    "joblib>=1.3.2",
+    "numpy>=1.26.4",
+]
+optional-dependencies.dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "pre-commit>=3.0.0",
+]
+
+[project.urls]
+Documentation = "https://github.com/newsrec/newsrec#readme"
+Repository = "https://github.com/newsrec/newsrec"
+Issues = "https://github.com/newsrec/newsrec/issues"
+
+[project.scripts]
+newsrec = "scripts.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["newsrec"]
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
